@@ -1,13 +1,26 @@
-package com.kmlisler.springboot.thymeleafdemo.model;
+package com.kmlisler.springboot.thymeleafdemo.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    public Employee(){
 
-    }
+    //define fields
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+    @Column(name="first_name") // db column adları
+    private String firstName;
+    @Column(name="last_name")
+    private String lastName;
+    @Column(name="email")
+    private String email;
+
+    // define  constructors
+
+    public Employee(){}
 
     public Employee(int id, String firstName, String lastName, String email) {
         this.id = id;
@@ -16,16 +29,13 @@ public class Employee {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public Employee(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     }
 
+    // define getter setter
     public int getId() {
         return id;
     }
@@ -56,5 +66,17 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    //public tostring
+
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

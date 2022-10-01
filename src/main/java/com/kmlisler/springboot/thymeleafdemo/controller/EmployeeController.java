@@ -1,6 +1,6 @@
 package com.kmlisler.springboot.thymeleafdemo.controller;
 
-import com.kmlisler.springboot.thymeleafdemo.model.Employee;
+import com.kmlisler.springboot.thymeleafdemo.entity.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
