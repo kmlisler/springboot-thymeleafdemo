@@ -1,1 +1,1 @@
-# springboot-thymeleafdemo
+# springboot-thymeleaf-demo
