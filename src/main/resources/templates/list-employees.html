@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Employees - Thymeleaf Demo KML</title>
+</head>
+<body>
+    <h1>Employee Directory</h1>
+    <hr>
+    <table th:border="2">
+        <thead>
+            <tr>
+                <td>First Name </td>
+                <td>Last Name </td>
+                <td>Email Address </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="theEmployee : ${employes}">
+                <td th:text="${theEmployee.getFirstName()}" />
+                <td th:text="${theEmployee.getLastName()}" />
+                <td th:text="${theEmployee.getEmail()}" />
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
