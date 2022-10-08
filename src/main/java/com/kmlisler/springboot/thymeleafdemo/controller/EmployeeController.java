@@ -4,10 +4,7 @@ import com.kmlisler.springboot.thymeleafdemo.entity.Employee;
 import com.kmlisler.springboot.thymeleafdemo.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,12 +33,20 @@ public class EmployeeController {
         theModel.addAttribute("newEmployee",newEmployee);
 
         return "employees/new-employee-form";
-
     }
     @PostMapping("/save")
     public String saveEmployee(@ModelAttribute("newEmployee") Employee theEmployee){
         employeeService.save(theEmployee);
 
         return "redirect:/employees/list";
+    }
+    @GetMapping("/showFromForUpdate")
+    public String showFromForUpdate(@RequestParam("employeeId") int theId, Model theModel){
+        // get existing employee
+        Employee employeeToBeUpdated = employeeService.findById(theId);
+        //set employee as a model attr to pre-populate form.
+        theModel.addAttribute("employeeToBeUpdated",employeeToBeUpdated);
+        return "employees/new-employee-form";
+
     }
 }
