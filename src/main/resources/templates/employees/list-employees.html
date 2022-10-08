@@ -10,6 +10,9 @@
 <div class="container">
     <h1>Employee Directory</h1>
     <hr>
+    <!-- Add new employee -->
+    <a th:href="@{/employees/showFromForAdd}" class="btn btn-success mb-3">Add New Employee </a>
+
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
         <tr>
@@ -20,7 +23,7 @@
         </thead>
 
         <tbody>
-        <tr th:each="theEmployee : ${employes}">
+        <tr th:each="theEmployee : ${employees}">
             <td th:text="${theEmployee.getFirstName()}" />
             <td th:text="${theEmployee.getLastName()}" />
             <td th:text="${theEmployee.getEmail()}" />

@@ -7,8 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,7 +25,15 @@ public class EmployeeController {
         // get employees from db
         List<Employee> theEmployees = employeeService.findAll();
 
-        theModel.addAttribute("employes",theEmployees); // oluşturduğumuz verileri html sayfasına attribute olarak gönderdik artık kullanabiliriz.
-        return "list-employees";
+        theModel.addAttribute("employees",theEmployees); // oluşturduğumuz verileri html sayfasına attribute olarak gönderdik artık kullanabiliriz.
+        return "employees/list-employees";
+    }
+    @GetMapping("/showFromForAdd")
+    public String showFromForAdd(Model theModel){
+        Employee newEmployee = new Employee();
+        theModel.addAttribute("newEmployee",newEmployee);
+
+        return "employees/new-employee-form";
+
     }
 }
