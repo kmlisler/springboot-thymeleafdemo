@@ -12,11 +12,11 @@
     <hr>
     <p class="h4 mb-4">Save Employee</p>
         <form action="#" th:action="@{/employees/save}"
-              th:object="${newEmployee}" method="post">
+              th:object="${employee}" method="post">
 
-            <input type="hidden" th:field="${}">
+            <input type="hidden" th:field="*{id}"/>
             <input type="text" th:field="*{firstName}"
-                   class="form-control mb-4 col-4" placeholder="First Name"/>
+                   class="form-control mb-4 col-md-4" placeholder="First Name"/>
             <input type="text" th:field="*{lastName}"
                    class="form-control mb-4 col-4" placeholder="Last Name"/>
             <input type="text" th:field="*{email}"

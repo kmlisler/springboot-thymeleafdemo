@@ -30,22 +30,22 @@ public class EmployeeController {
     @GetMapping("/showFromForAdd")
     public String showFromForAdd(Model theModel){
         Employee newEmployee = new Employee();
-        theModel.addAttribute("newEmployee",newEmployee);
+        theModel.addAttribute("employee",newEmployee);
 
         return "employees/new-employee-form";
     }
     @PostMapping("/save")
-    public String saveEmployee(@ModelAttribute("newEmployee") Employee theEmployee){
+    public String saveEmployee(@ModelAttribute("employee") Employee theEmployee){
         employeeService.save(theEmployee);
 
         return "redirect:/employees/list";
     }
-    @GetMapping("/showFromForUpdate")
+    @GetMapping("/showFormForUpdate")
     public String showFromForUpdate(@RequestParam("employeeId") int theId, Model theModel){
         // get existing employee
         Employee employeeToBeUpdated = employeeService.findById(theId);
         //set employee as a model attr to pre-populate form.
-        theModel.addAttribute("employeeToBeUpdated",employeeToBeUpdated);
+        theModel.addAttribute("employee",employeeToBeUpdated); // it must be same name in
         return "employees/new-employee-form";
 
     }
